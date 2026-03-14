@@ -1,0 +1,203 @@
+section {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+section:not(:first-of-type)::before {
+    content: '';
+    position: absolute;
+    top: -75px;
+    left: 0;
+    right: 0;
+    border-radius: 25px;
+    height: 1px;
+    background-color: hsla(0, 0%, 80%, 0.5);
+}
+
+section.items {
+    column-gap: 20px;
+    row-gap: 40px;
+}
+
+section.items .empty {
+    margin: 0 auto;
+    width: 45ch;
+    color: rgb(131, 25, 25);
+    text-align: center;
+}
+
+section.items .item {
+    padding: 20px 10px;
+    flex: 1 0 calc(50% - (20px / 2));
+    height: 120px;
+    display: flex;
+    gap: 10px;
+}
+
+.item .img {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+}
+
+.item .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item .details {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.details .title {
+    font-size: .88rem;
+    letter-spacing: 1.4px;
+}
+
+.details .price {
+    font-size: 0.78rem;
+    letter-spacing: 1.4px;
+}
+
+.item .actions {
+    margin-left: auto;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.actions #quantity {
+    border-radius: 4px;
+    border: 2px solid black;
+    outline: none;
+    flex: 0 0 35px;
+    width: 55px;
+    text-align: center;
+
+
+}
+
+.actions .delete {
+    flex: 0 0 35px;
+    width: 55px;
+    border: none;
+    border: 2px solid rgb(131, 25, 25);
+    background-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* SHIPPING SECTION */
+
+section.shipping,
+section.card_details {
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: 15px;
+    row-gap: 30px;
+}
+
+section.shipping .input_field,
+section.card_details .input_field {
+    position: relative;
+    height: 38px;
+    border-radius: 10px;
+}
+
+.input_field label {
+    padding: 3px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    transform: translateY(-55%);
+    background-color: white;
+    font-size: 0.78rem;
+    color: var(--primary-clr);
+}
+
+.input_field input {
+    padding-left: 3px;
+    width: 100%;
+    height: 100%;
+    color: var(--primary-clr);
+
+}
+
+section.shipping .input_field.address {
+    flex: 0 0 100%;
+}
+
+section.shipping .input_field.city{
+    flex: 0 0 calc(25% - (15px / 2));
+}
+
+section.shipping .input_field.state {
+    flex: 0 0 calc(25% - (15px / 2));
+}
+
+section.shipping .input_field.zip {
+    flex: 0 0 calc(50% - 15px);
+}
+
+section.card_details .input_field.full_name {
+    flex: 0 0 100%;
+}
+
+section.card_details .input_field.num{
+    flex: 0 0 100%;
+}
+
+section.card_details .input_field.cvv {
+    flex: 0 0 calc(50% - (15px / 2));
+}
+
+section.card_details .input_field.exp {
+    flex: 0 0 calc(50% - (15px / 2));
+}
+
+section.checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section.checkout .total_label {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--primary-clr);
+    border-bottom: 1px solid var(--primary-clr);
+}
+
+section.checkout button {
+    width: 100%;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid var(--primary-clr);
+    border-radius: 5px;
+    font-size: 1.3rem;
+    color: var(--primary-clr);
+    user-select: none;
+
+    transition: transform 100ms ease-in;
+}
+
+section.checkout button:active {
+    transform: scale(0.9, 0.9);
+}
+
+section.checkout button:disabled {
+    background-color: #ccc4;
+    border: 1px solid black;
+    color: #ccc9;
+}
+
+section.checkout button:disabled:active {
+    transform: none;
+}
