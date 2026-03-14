@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/forkeepsake/static/css/main.9a3f5d62.css",
+    "main.js": "/forkeepsake/static/js/main.a95cd1de.js",
+    "static/media/online_ad.svg": "/forkeepsake/static/media/online_ad.82702d57597d5fcafda4978c5ad40aac.svg",
+    "index.html": "/forkeepsake/index.html",
+    "main.9a3f5d62.css.map": "/forkeepsake/static/css/main.9a3f5d62.css.map",
+    "main.a95cd1de.js.map": "/forkeepsake/static/js/main.a95cd1de.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9a3f5d62.css",
+    "static/js/main.a95cd1de.js"
+  ]
+}
