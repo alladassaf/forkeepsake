@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useCartContext } from '../../context/CartContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
@@ -6,19 +6,21 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 function Card({ data }) {
 
     const [cart, updateCart] = useCartContext()
+    const qtyRef = useRef()
 
-    function addToCart(thumbnail, title, price) {
+    function addToCart(thumbnail, title, price, value) {
 
             const cartCopy = [...cart]
 
             const availableItem = cartCopy.findIndex(item => item.title === title)
 
+            console.log(qtyRef)
             console.log(availableItem)
 
             if (availableItem === -1) {
-                updateCart(prevState => ([...prevState, {thumbnail, title, price, quantity: 1}]))
+                updateCart(prevState => ([...prevState, {thumbnail, title, price, quantity: value}]))
             } else if (availableItem > -1) {
-                cartCopy[availableItem].quantity = cartCopy[availableItem].quantity+1
+                cartCopy[availableItem].quantity = value
                 updateCart(cartCopy)
             }
 
@@ -30,7 +32,7 @@ function Card({ data }) {
     }, [cart])
 
   return (
-    <div className='card' onClick={() => {addToCart(data.thumbnail, data.title, data.price)}}>
+    <div className='card'>
         <div className='top'>
             <div className='img'>
                 <img src={data.thumbnail} alt={data.title} />
@@ -40,12 +42,15 @@ function Card({ data }) {
             <h2 className='title'>{data.title}</h2>
             <p className='price'>${data.price}</p>
             <div className='desc'>
-                <ul className='info'>
-                    <li>{data.stock}</li>
-                    <li>{data.sku}</li>
-                </ul>
+                <p className='stock'>{data.stock}</p>
+                <div className='counter_container'>
+                    <input type='number' className='count' min='1' onChange={(e) => {addToCart(data.thumbnail, data.title, data.price, e.target.value)}}/>
+                </div>
+            </div>
+            <div className='card_footer'>
+                <span className='sku'>{data.sku}</span>
                 <div className='review'>
-                    <FontAwesomeIcon icon={faStar} style={{fontSize: 12, color: '#5D8096'}} />
+                    <FontAwesomeIcon icon={faStar} style={{fontSize: '0.7rem', color: '#fff'}} />
                     <span>{data.rating}</span>
                 </div>
             </div>

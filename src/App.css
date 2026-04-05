@@ -111,3 +111,9 @@ footer .copyright {
   -webkit-text-stroke: 0.085px white;
 
 }
+
+@media (min-width: 992px) {
+  :root {
+  --gutter: 15vw;
+}
+}
